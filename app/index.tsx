@@ -11,10 +11,13 @@ import {
 } from 'react-native';
 import { images } from '../constants';
 import CustomButton from '@/components/CustomButton';
+import { useGlobalContext } from '@/context/GlobalProvider';
 
 const { height } = Dimensions.get('window');
 
 export default function App() {
+  const {isLoading,isLoggedIn} = useGlobalContext();
+  if(!isLoading && isLoggedIn) <Redirect href="/home" />
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.scrollContent}>

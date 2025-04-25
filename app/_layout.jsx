@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect } from 'react';
 import { SplashScreen, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
-
+import { GlobalProvider } from '../context/GlobalProvider';
 SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
@@ -33,6 +33,7 @@ const RootLayout = () => {
   }
 
   return (
+    <GlobalProvider>
     <Stack>
       <Stack.Screen
         name="index"
@@ -53,12 +54,13 @@ const RootLayout = () => {
     }}
   />
   <Stack.Screen
-  name="/search/[query]"
+  name="search/[query]"
   options={{
     headerShown: false,
   }}
 />
     </Stack>
+    </GlobalProvider>
   );
 }
 
